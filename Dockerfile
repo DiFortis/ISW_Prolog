@@ -9,7 +9,7 @@ WORKDIR /app
 
 # Install dependencies and SWI-Prolog
 RUN apt-get update && \
-    apt-get install -y swi-prolog && \
+    apt-get install -y swi-prolog git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
