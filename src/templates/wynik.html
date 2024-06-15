@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <title>Wynik</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="result-container">
+      <h1>Twoja partia to:</h1>
+      <h2>{{ partia }}</h2>
+      <button onclick="window.location.href='/'">Powrót do pytań</button>
+    </div>
+  </body>
+</html>

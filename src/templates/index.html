@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz o Partiach Politycznych</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Quiz o Partiach Politycznych</h1>
+    <form action="/wynik" method="post">
+      {% for i, pytanie in enumerate(pytania) %}
+        <div>
+          <p>{{ pytanie }}</p>
+          <input type="radio" id="tak_{{i}}" name="pytanie_{{i}}" value="tak" required>
+          <label for="tak_{{i}}">Tak</label><br>
+          <input type="radio" id="nie_{{i}}" name="pytanie_{{i}}" value="nie">
+          <label for="nie_{{i}}">Nie</label><br>
+        </div>
+      {% endfor %}
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
