@@ -1,13 +1,13 @@
 :- dynamic user_answer/3.
 
-% Definiowanie kategorii (partii politycznych) i ich preferencji
+
 category(pis, [sprawiedliwosc, tradycja, socjalizm]).
 category(po, [liberalizm, kapitalizm, modernizacja]).
 category(lewica, [socjalizm, rownosc, ekologia]).
 category(psl, [agraryzm, tradycja, decentralizacja]).
 category(konfederacja, [kapitalizm, wolnosc, konserwatyzm]).
 
-% Definiowanie pytań
+
 question(1, 'Czy popierasz polityke socjalna?', [tak, nie]).
 question(2, 'Czy uwazasz, ze tradycja jest wazna?', [tak, nie]).
 question(3, 'Czy jestes za wolnym rynkiem?', [tak, nie]).
@@ -24,13 +24,13 @@ question(13, 'Czy jestes za liberalizmem?', [tak, nie]).
 question(14, 'Czy uwazasz, ze socjalizm jest dobra droga?', [tak, nie]).
 question(15, 'Czy popierasz polityke rownych szans?', [tak, nie]).
 
-% Rejestrowanie odpowiedzi użytkownika
+
 answer(QuestionNum, User, Response) :- 
     question(QuestionNum, _, Options), 
     member(Response, Options), 
     assertz(user_answer(User, QuestionNum, Response)).
 
-% Dopasowywanie kategorii (partii)
+
 match_party(User, Category) :-
     category(Category, Features),
     check_features(User, Features).
@@ -54,5 +54,4 @@ feature_question(agraryzm, 9).
 feature_question(decentralizacja, 6).
 feature_question(konserwatyzm, 12).
 
-% Usuwanie odpowiedzi użytkownika (opcjonalne, do testowania)
 clear_answers :- retractall(user_answer(_, _, _)).
