@@ -7,11 +7,18 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install SWI-Prolog
+# Install dependencies and SWI-Prolog
 RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    apt-add-repository ppa:swi-prolog/stable && \
+    apt-get update && \
     apt-get install -y swi-prolog && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Set environment variables for SWI-Prolog
+ENV PATH="/usr/lib/swi-prolog/bin:${PATH}"
+ENV SWI_HOME_DIR="/usr/lib/swi-prolog"
 
 # Copy the requirements file into the container
 COPY requirements.txt /app/
